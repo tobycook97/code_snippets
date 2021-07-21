@@ -32,9 +32,14 @@
               <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
             </div>
             <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+            <div class="navbar-nav"> 
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'profile' %}">See Profile</a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout Bro</a>
+              {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -51,6 +56,7 @@
             {% endfor %}
           {% endif %}
           {% block content %}{% endblock %}
+          <div>hejhej</div>
         </div>
         <div class="col-md-4">
           <div class="content-section">
@@ -60,7 +66,7 @@
                 <li class="list-group-item list-group-item-light">Latest Posts</li>
                 <li class="list-group-item list-group-item-light">Announcements</li>
                 <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                <li class="list-group-item list-group-item-light">nope</li>
               </ul>
             </p>
           </div>
